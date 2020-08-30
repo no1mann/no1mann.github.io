@@ -308,7 +308,7 @@ function nytRequest_onload(response) {
 function loadCovidTrackingData() {
     document.getElementById("hdrTitle").innerHTML = "Loading Data from covidtracking.com...";
     let ctRequest = new XMLHttpRequest()
-    ctRequest.open('GET','http://covidtracking.com/api/v1/states/daily.json');
+    ctRequest.open('GET','https://api.covidtracking.com/v1/states/daily.json');
     ctRequest.responseType = 'text';
     ctRequest.onload = function() {
         ctRequest_onload(ctRequest.response);
