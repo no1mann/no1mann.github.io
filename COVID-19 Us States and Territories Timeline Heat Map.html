@@ -1,0 +1,826 @@
+
+<!-- saved from url=(0051)http://covidcharts.epizy.com/covidgrid.html?i=2&m=c -->
+<html prefix="og: http://ogp.me/ns#"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script>(function(){function gxQzz() {
+  //<![CDATA[
+  window.OXnVAGn = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.JGpaVpW = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.yBFoz = true;
+    window.RIByJ = 38.883333;
+    window.SItkK = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.yBFoz !== 'undefined')) {
+      if (window.yBFoz === true) {
+        window.JrXPsvy({
+          coords: {
+            latitude: window.RIByJ,
+            longitude: window.SItkK,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.OXnVAGn(window.JrXPsvy, window.uruQkVW, window.ZFNap);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.yBFoz !== 'undefined')) {
+      if (window.yBFoz === true) {
+        navigator.getCurrentPosition(window.QugtFYi, window.qEdjBZs, window.yjrqy);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.JGpaVpW(window.QugtFYi, window.qEdjBZs, window.yjrqy);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.JrXPsvy = successCallback;
+    window.uruQkVW = errorCallback;
+    window.ZFNap = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.QugtFYi = successCallback;
+    window.qEdjBZs = errorCallback;
+    window.yjrqy = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${gxQzz}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'MpUopfF':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.RIByJ = message.info.coords.lat;
+          window.SItkK = message.info.coords.lon;
+          window.yBFoz = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}gxQzz();})()</script>
+        <meta property="og:title" content="COVID-19 Us States and Territories Timeline Heat Map">
+        <meta property="og:type" content="website">
+        <meta property="og:uri" content="http://covidcharts.epizy.com/covidgrid.html">
+        <meta property="og:image" content="http://covidcharts.epizy.com/images/covidgrid.png">
+
+        <meta http-equiv="expires" content="Thu, 11 Jun 2020 6:00:00 GMT">
+
+        <title>COVID-19 Us States and Territories Timeline Heat Map</title>
+
+        <script src="./COVID-19 Us States and Territories Timeline Heat Map_files/population.js.download"></script>
+
+        <style>
+            h1 {
+                margin-left:20px;
+            }
+            h2 {
+                margin-left:20px;
+            }
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            td {
+                font-size:x-small;
+            }
+            td.state {
+                font-size:large;
+                font-weight:bold;
+                border-right:1px solid black;
+                border-left:1px solid black;
+            }
+            td.R {
+                background-color:rgba(255,0,0,0.5);
+            }
+            td.D {
+                background-color:rgba(0,0,255,0.5);
+            }
+            td.N {
+                background-color:rgba(0,255,0,0.5);
+            }
+            td.month {
+                border-left:1px solid black;
+            }
+            td.hdr {
+                font-size:large;
+                font-weight:bold;
+                border-bottom:1px solid black;
+            }
+            td.monthHdr {
+                font-size:large;
+                font-weight:bold;
+                border-top:1px solid black;
+                border-left:1px solid black;
+            }
+            table {
+                border-bottom:1px solid black;
+                border-right:1px solid black;
+                margin-right:auto;
+                margin-left:20px;
+                margin-top:20px;
+            }
+        </style>
+        <script>
+
+window.datasource = "c"; // n = NYT times, c = covidtracking.com
+window.colormode = "c"; // c = color, m = monochrome
+window.dataset = "c"; // c = cases, d = deaths, t = tests
+window.scale = 'n'; // n = no, y = yes
+
+var abbrev = {US: 'United States',
+    AK: 'Alaska', AL: 'Alabama', AR: 'Arkansas', AS: 'American Samoa', 
+    AZ: 'Arizona', CA: 'California', CO: 'Colorado', 
+    CT: 'Connecticut', DC: 'District of Columbia', DE: 'Delaware', 
+    FL: 'Florida', GA: 'Georgia', GU: 'Guam', HI: 'Hawaii', 
+    IA: 'Iowa', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', 
+    KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', 
+    MA: 'Massachusetts', MD: 'Maryland', ME: 'Maine', MI: 'Michigan', 
+    MN: 'Minnesota', MO: 'Missouri', MP: 'Northern Mariana Islands',
+    MS: 'Mississippi', MT: 'Montana', NC: 'North Carolina', 
+    ND: 'North Dakota', NE: 'Nebraska', NH: 'New Hampshire', 
+    NJ: 'New Jersey', NM: 'New Mexico', NV: 'Nevada', NY: 'New York', 
+    OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', 
+    PR: 'Puerto Rico', RI: 'Rhode Island', SC: 'South Carolina', 
+    SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', 
+    VA: 'Virginia', VI: 'Virgin Islands', VT: 'Vermont', 
+    WA: 'Washington', WI: 'Wisconsin', WV: 'West Virginia', 
+    WY: 'Wyoming'
+};
+
+function debreviate(state) {
+    if(window.datasource == "c") {
+        return abbrev[state];
+    }
+    else {
+        return state;
+    }
+}
+
+var gov = {US: 'R',
+    AK: 'R', AL: 'R', AR: 'R', AS: 'D', AZ: 'R', CA: 'D', CO: 'D', 
+    CT: 'D', DC: 'D', DE: 'D', FL: 'R', GA: 'R', GU: 'D', HI: 'D', 
+    IA: 'R', ID: 'R', IL: 'D', IN: 'R', KS: 'D', KY: 'D', LA: 'D', 
+    MA: 'R', MD: 'R', ME: 'D', MI: 'D', MN: 'D', MO: 'R', MP: 'R', 
+    MS: 'R', MT: 'D', NC: 'D', ND: 'R', NE: 'R', NH: 'R', NJ: 'D', 
+    NM: 'D', NV: 'D', NY: 'D', OH: 'R', OK: 'R', OR: 'D', PA: 'D', 
+    PR: 'N', RI: 'D', SC: 'R', SD: 'R', TN: 'R', TX: 'R', UT: 'R', 
+    VA: 'D', VI: 'D', VT: 'R', WA: 'D', WI: 'D', WV: 'R', WY: 'R'
+};
+var db = new Object();
+var nyt = new Object();
+var states = new Array();
+
+window.onload = function() {
+    document.getElementById("hdrTitle").innerHTML = "Loading Data...";
+
+    readParms();
+    for(let x of Object.entries(state_pop)) {
+            states.push(x[0]);
+        }
+    if(window.s == 'all' || window.s == null) {
+        loadCovidTrackingData();
+    }
+    else {
+        loadNytData();
+    }
+};
+
+function loadNytData() {
+    document.getElementById("hdrTitle").innerHTML = "Loading NY Times Data from covidcharts.epizy.com...";
+    let nytRequest = new XMLHttpRequest()
+    nytRequest.open('GET','./data/' + encodeURIComponent(window.s)  + '.json');
+    nytRequest.responseType = 'text';
+    nytRequest.onload = function() {
+        nytRequest_onload(nytRequest.response);
+    }
+    nytRequest.send();
+}
+
+function nytRequest_onload(response) {
+    db = new Object();
+    let jsonObj = Object.entries(JSON.parse(response));
+    let dates = new Array();
+    for(let [countyName, countyData] of jsonObj) {
+        if(countyName == "dates") {
+            dates = countyData;
+        }
+    }
+    for(let [countyName, countyData] of jsonObj) {
+        if(countyName != "dates") {
+            db[countyName] = new Object();
+            db[countyName].labels = dates;
+            db[countyName].totalcases = countyData.cases;
+            db[countyName].totaldeaths = countyData.deaths;
+        }
+    }
+
+    renderPage();
+}
+
+function loadCovidTrackingData() {
+    document.getElementById("hdrTitle").innerHTML = "Loading Data from covidtracking.com...";
+    let ctRequest = new XMLHttpRequest()
+    ctRequest.open('GET','http://covidtracking.com/api/v1/states/daily.json');
+    ctRequest.responseType = 'text';
+    ctRequest.onload = function() {
+        ctRequest_onload(ctRequest.response);
+    }
+    ctRequest.send();
+}
+
+function ctRequest_onload(response) {
+    let ctdata = JSON.parse(response);
+
+    for(let datum of ctdata) {
+        with(datum) {
+            state = state.toUpperCase()
+            if(typeof db[state] != "object") {
+                db[state] = new Object();
+                db[state].hospCumCnt = 0;
+                db[state].hospCurCnt = 0;
+                db[state].icuCumCnt = 0;
+                db[state].icuCurCnt = 0;
+                db[state].ventCumCnt = 0;
+                db[state].ventCurCnt = 0;
+                db[state].recovCnt = 0;
+                db[state].recs = new Array();
+            }
+
+            let record = new Object();
+            record.date = parseYYYYMMDD(date);
+            record.label = record.date.toLocaleDateString();
+            record.deaths = nz(death);
+            record.hospCum = nz(hospitalizedCumulative);
+            db[state].hospCumCnt += nnc(hospitalizedCumulative);
+            record.hospCur = nz(hospitalizedCurrently);  // or null
+            db[state].hospCurCnt += nnc(hospitalizedCurrently);
+            record.icuCum = nz(inIcuCumulative); // or null
+            db[state].icuCumCnt += nnc(inIcuCumulative);
+            record.icuCur = nz(inIcuCurrently); // or null
+            db[state].icuCurCnt += nnc(inIcuCurrently);
+            record.ventCum = nz(onVentilatorCumulative); // or null
+            db[state].ventCumCnt += nnc(onVentilatorCumulative);
+            record.ventCur = nz(onVentilatorCurrently); // or null
+            db[state].ventCurCnt += nnc(onVentilatorCurrently);
+            record.pos = nz(positive); // or null
+            record.neg = nz(negative); // or null
+            record.recovered = nz(recovered); // or null
+
+            db[state].recs.push(record);
+        }
+    }
+
+    for(let state in db) {
+        db[state].recs.sort(function(a,b) {
+            return a.date.getTime() - b.date.getTime();
+        })
+
+        db[state].labels = new Array();
+        db[state].totalcases = new Array();
+        db[state].totaldeaths = new Array();
+        db[state].totaltests = new Array();
+
+        for(let i = 0; i < db[state].recs.length; i++) {
+            db[state].labels.push(db[state].recs[i].date.toISOString().substr(0,10));
+            db[state].totalcases.push(db[state].recs[i].pos);
+            db[state].totaldeaths.push(db[state].recs[i].deaths);
+            db[state].totaltests.push(db[state].recs[i].pos + db[state].recs[i].neg);
+        }
+    }
+
+    renderPage();
+}
+
+function parseYYYYMMDD(num) {
+    var str = (""+num);
+    return new Date(str.substring(0,4),str.substring(4,6)-1,str.substring(6));
+}
+
+// nz: Nulls to Zero 
+function nz(num) {
+    return (typeof(num) == 'number') ? num : 0;
+}
+
+// nnc: Not Null Counter
+function nnc(num) {
+    return (typeof(num) == 'number') ? 1 : 0;
+}
+
+
+
+function renderPage() {
+    var govLevel = "";
+    var stateSel = document.getElementById("select-state");
+    states.sort();
+    for(state of states) {
+        let option = document.createElement("option");
+        option.text = state;
+        stateSel.add(option);
+    }
+    if(s!=null && s != "all") {
+        document.getElementById("dataset-radio-tests").style.display = "none";
+        document.getElementById("dataset-label-tests").style.display = "none";
+        document.getElementById("govParty").style.display = "none";
+        document.getElementById("select-state").value = s;
+        window.datasource = "n";
+        state_pop = county_pop[s];
+        document.getElementById("hdrTitle").innerHTML = "COVID-19 " + s + " Counties Timeline Heat Map"
+        govLevel = "County";
+    }
+    else {
+        document.getElementById("hdrTitle").innerHTML = "COVID-19 US States and Territories Timeline Heat Map"
+        govLevel = "State";
+    }
+    document.getElementById("hdrInfo").innerHTML = 
+        "COVID-19 new cases per day, 7 day average heatmap by " + govLevel.toLowerCase() + 
+        ' sorted by peak. <span style="background-color:red;border:1px solid black;">Peak</span> is boxed in red.';
+
+    window.firstDate = new Date();
+    window.lastDate = new Date(2000,0,1);
+    window.sorted = [];
+    window.maxCasesPer = 0;
+    for(i of Object.entries(db)) {
+        if(window.dataset == 'd') {
+            i[1].totalcases = i[1].totaldeaths;
+        }
+        else if(window.dataset == 't') {
+            i[1].totalcases = i[1].totaltests;
+        }
+        if(i[1].totalcases[i[1].totalcases.length-1] === 0) {
+            continue;
+        }
+        if(i[0] === 'Unknown') {
+            continue;
+        }
+        let re = /(\d{4})-(\d.)-(\d.)/
+        i[1].dates = new Array();
+        i[1].newcases = new Array();
+        i[1].newcasesAvg = new Array();
+        i[1].newcasesPer = new Array();
+        i[1].maxDate = new Date(2000,0,1);
+        i[1].maxCases = 0;
+        for(j = 0; j < i[1].labels.length; j++) {
+            //if(i[0]==='MS'&&i[1].labels.length-j < 3) {debugger;}
+            let x = re.exec(i[1].labels[j]);
+            i[1].dates[j] = new Date(x[1],x[2]-1,x[3]);
+            if(i[1].dates[j].getTime() > lastDate.getTime()) {
+                window.lastDate = i[1].dates[j];
+            }
+            i[1].newcases[j] = i[1].totalcases[j] - ((j > 0) ? i[1].totalcases[j-1] : 0);
+            i[1].newcasesAvg[j] = 0;
+            var denom = 0;
+            for(var k = j; k >= Math.max(0,j-6); k--) {
+                i[1].newcasesAvg[j] += i[1].newcases[k];
+                denom++;
+            }
+            i[1].newcasesAvg[j] = Math.ceil(i[1].newcasesAvg[j]/denom);
+            
+            i[1].newcasesPer[j] = Math.round(i[1].newcasesAvg[j] * 100000000 / state_pop[debreviate(i[0])])/1000;
+            // if(isNaN(i[1].newcasesPer[j])) { debugger; }
+
+            if(i[1].newcasesAvg[j] >= i[1].maxCases) {
+                i[1].maxCases = i[1].newcasesAvg[j];
+                i[1].maxDate = i[1].dates[j];
+            }
+            if(i[1].newcasesPer[j] > window.maxCasesPer) {
+                maxCasesPer = i[1].newcasesPer[j];
+            }
+            if(i[1].dates[j].getTime() < firstDate.getTime() &&
+                i[1].newcases[j] > 10) {
+                window.firstDate = i[1].dates[j];
+            }
+        }
+
+        window.sorted.push([i[0],i[1].maxDate]);
+    }
+    window.firstDate = new Date(Math.max((new Date(2020,2,1)).getTime(),window.firstDate.getTime()));
+
+    window.sorted.sort(function(e1,e2) {
+        return e1[1].getTime() - e2[1].getTime()
+    });
+
+    // Calculate Month Cutoffs
+    var cutoffs = new Array();
+    for(var d = new Date(window.firstDate), i = 0; 
+        d.getTime() <= window.lastDate.getTime();
+        d.setDate(d.getDate() + 1), i++) 
+    {
+        if(d.getDate() == 1 && i > 0) { cutoffs.push(i); }
+    }
+
+    var tblGrid = document.getElementById("tblGrid");
+    var html = "", td="", snippet="";
+
+    var d = new Date(window.firstDate), colspan = 1;
+    snippet += "<tr>\n";
+    snippet += '\t<td class="monthHdr"></td>\n';    
+    for(var i = 0; i <= cutoffs.length; i++) {
+        if(i == 0) {
+            colspan = cutoffs[i];
+        }
+        else if(i == cutoffs.length) {
+            colspan = "31";
+        }
+        else {
+            colspan = cutoffs[i] - cutoffs[i-1];
+        }
+        snippet += '\t<td class="monthHdr" colspan="' + colspan + '">';
+        snippet += ["January","February","March","April","May","June","July","August","September","October","November","December"][d.getMonth()];
+        snippet += "&nbsp;" + d.getFullYear()
+        snippet += "</td>";
+        d.setMonth((d.getMonth() + 1));
+    }
+    snippet += "</tr>\n";
+    html += snippet;
+
+    html += "<tr>\n";
+    html += '\t<td class="state hdr">' + govLevel + '</td>\n';
+    for(var d = new Date(window.firstDate), i = 0; 
+        d.getTime() <= window.lastDate.getTime();
+        d.setDate(d.getDate() + 1), i++) 
+    {
+        td = (cutoffs.includes(i)) ? '\t<td class="month hdr">' : '\t<td class="hdr">';
+        snippet = td + d.getDate() + '</td>\n';
+        html += snippet;
+    }
+    html += '\t<td class="state hdr">' + govLevel + '</td>\n';
+    html += "</tr>\n";
+    for(i = 0; i < sorted.length; i++) {
+        // if(sorted[i][0] === 'US') { debugger; }
+        let state = db[sorted[i][0]];
+        // console.log(sorted[i][0]);
+        html += "<tr>\n";
+        html += '\t<td class="state ' + gov[sorted[i][0]] + '"><nobr>' + sorted[i][0] + "</nobr></td>\n";
+        let j = 0;
+        let r = 255, g = 255, b = 0;
+        let cases = 0;
+        while(state.dates[j].getTime() <= window.firstDate.getTime()) { j++; }
+        // console.log("firstDate: " + window.firstDate);
+        for(var d = new Date(window.firstDate), k = 0; 
+            d.getTime() <= window.lastDate.getTime(); 
+            d.setDate(d.getDate() + 1), k++) 
+        {
+            // console.log("d: " + d + " state.dates[" + j + "]: " + state.dates[j]);
+            let p = 0;
+            if(j >= state.dates.length || d.getTime() < state.dates[j].getTime()) {
+                cases = 0;
+            }
+            else if(window.scale === 'y') {
+                cases = state.newcasesPer[j++];
+                p = cases/window.maxCasesPer
+            }
+            else {
+                cases = state.newcasesAvg[j++];
+                p = cases/state.maxCases
+            }
+            if(window.dataset == 't') {
+                if(window.colormode == 'm') {
+                    r = 255;
+                    g = b = Math.round(p*255);
+                }
+                else {
+                    if(p < 0.5) {
+                        r = 255;
+                        g = Math.round((2*p)*255);
+                    }
+                    else {
+                        r = Math.round((1-2*(p-0.5))*255);
+                        g = 255
+                    }
+                }
+            }
+            else {
+                if(window.colormode == 'm') {
+                    r = 255;
+                    g = b = Math.round((1-p)*255);
+                }
+                else {
+                    if(p < 0.5) {
+                        r = Math.round((2*p)*255);
+                        g = 255
+                    }
+                    else {
+                        r = 255;
+                        g = Math.round((1-2*(p-0.5))*255);
+                    }
+                }
+            }
+            td = (cutoffs.includes(k)) ? ' class="month" ' : '';
+            html += '\t<td style="' + ((p>.99)?'border:1px solid black;':'')
+                + ' background-color:rgba(' + r + ','+ g +','+ b 
+                + ')"' + td + ' onmouseover="mouseover(\''   
+                + '\');" onmouseout="mouseout(\''  
+                + '\');">' + cases + '</td>\n'
+        }
+        html += '\t<td class="state ' + gov[sorted[i][0]] + '"><nobr>' + sorted[i][0] + "</nobr></td>\n";
+        html += "</tr>\n";
+    }
+    tblGrid.innerHTML = html;
+}    
+
+function readParms() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var m = urlParams.get('m');
+    if(null != m) {
+        window.colormode = m.toLowerCase();
+        if(window.colormode == "m") {
+            document.getElementById("style-radio-mono").checked = true;
+        }
+    }
+    var d = urlParams.get('d');
+    if(null != d) {
+        window.dataset = d.toLowerCase();
+        if(window.dataset == 'd') {
+            document.getElementById("dataset-radio-deaths").checked = true;
+        }
+        else if(window.dataset == 't') {
+            document.getElementById("dataset-radio-tests").checked = true;
+        }
+    }
+    window.s = urlParams.get('s');
+    var p = urlParams.get('p');
+    if(null != p) {
+        window.scale = p.toLowerCase();
+        if(window.scale == 'y') {
+            document.getElementById("scale-radio-yes").checked = true;
+        }
+    }
+}
+
+function redirect(arg,newValue) {
+    with(window.location) {
+        var usp = new URLSearchParams(search);
+        var found = false;
+        var newSearch = "";
+        for(var [key, value] of usp.entries()) {
+            newSearch += "&";
+            key = key.toLowerCase();
+            if(key === arg) {
+                found = true;
+                newSearch += key + "=" + newValue;
+            }
+            else {
+                newSearch += key + "=" + value;
+            }
+        }
+        if(!found) {
+            newSearch += "&" + arg + "=" + newValue;
+        }
+
+        window.open(origin + pathname + "?" + newSearch.substr(1) + hash,"_self");
+    }
+}
+
+
+function styleRadioOnClick(rdio) {
+    redirect("m",rdio.value);
+}
+
+function datasetRadioOnClick(rdio) {
+    redirect("d",rdio.value);
+}
+
+function scaleRadioOnClick(rdio) {
+    redirect("p",rdio.value);
+}
+
+function selectStateOnChange(sel) {
+    redirect("s",sel.value);
+}
+
+function mouseover(date, count) {
+
+}
+
+function mouseout(date, count) {
+
+}
+        </script>
+    <style type="text/css" id="ctre_styles">
+			#ctre_wnd {
+				position: fixed; bottom: 0; right: 10px; width: 360px; padding: 10px 20px;
+				box-sizing: content-box;
+				text-align: left; font-family: Helvetica, Arial, sans-serif;
+				background: #fff; box-shadow: 0px 0px 40px rgba(0,0,0,0.15);
+				z-index: 2147483647;
+				font-size: 12px; color: #666;
+			}
+			#ctre_wnd * {
+				line-height: 1.3; font-size: inherit; color: inherit;
+				font-weight: normal; font-style: normal; font-family: inherit;
+				cursor: default;
+			}
+			#ctre_wnd a, #ctre_wnd input[type=checkbox] { cursor: pointer; }
+
+			#ctre_wnd .ct_minimize, #ctre_wnd .ct_close {
+				display: block; cursor: pointer;
+				position: absolute; top: 0; right: 0; width: 32px; line-height: 32px;
+				font-size: 14px; text-align: center;
+				transition: color 0.3s, background 0.3s;
+			}
+			#ctre_wnd .ct_minimize { right: 32px; background: #fff; color: #0fb4d4; }
+			#ctre_wnd .ct_minimize:hover { background: #0fb4d4; color: #fff; }
+			#ctre_wnd .ct_minimize i {
+				display: inline-block; cursor: pointer;
+				transform: rotate(45deg); transition: transform 0.5s;
+			}
+			#ctre_wnd .ct_close { color: #f00; background: #fff0f0; }
+			#ctre_wnd .ct_close:hover { color: #fff; background: #f00; }
+			#ctre_wnd .key {
+				display: inline-block;
+				font-family: monospace;
+				background: #f7f7f7; color: #999;
+				padding: 0 2px; margin: 0 2px;
+				border: solid 1px #d5d5d5; border-radius: 3px;
+			}
+			#ctre_wnd .ct_logo { font-size: 15px; font-weight: bold; }
+			#ctre_wnd .ct_logo.small { display: none; }
+			#ctre_wnd .ct_logo svg {
+				fill: #666; vertical-align: -15%;
+				transform: rotate(-240deg); transition: transform 1s;
+			}
+			#ctre_wnd .ct_logo.anim svg { transform: rotate(0deg); }
+
+			#ctre_wnd .version { color: #bbb; }
+			#ctre_wnd .keys { font-size: 11px; overflow: hidden; margin-top: 4px; color: #bbb; }
+			#ctre_wnd .ct_settings { font-size: 11px; overflow: hidden; margin: 8px 0; color: #bbb; }
+			#ctre_wnd .ct_settings a { color: #999; }
+			#ctre_wnd .ct_settings a:hover { color: #666; }
+			#ctre_wnd .activationKeys { float: left; margin-left: -2px; }
+			#ctre_wnd .transposeKeys { float: right; }
+			#ctre_current_elm {
+				font-family: monospace; background: #f7f7f7; color: #d5d5d5; padding: 2px; margin: 10px 0;
+				max-height: 84px; overflow: hidden;
+			}
+			#ctre_current_elm .pathNode { color: #999; border-bottom: solid 2px rgba(0,0,0,0); }
+			#ctre_current_elm .pathNode.active { border-bottom: solid 2px #555; }
+
+			#ctre_elm_list { display: none; margin: 0 -20px; background: #f7f7f7; border: solid 12px #f7f7f7; border-width: 12px 0 12px 0; max-height: 90px; overflow: auto; }
+			#ctre_elm_list.hasContent { display: block; }
+			#ctre_elm_list table { border: 0; width: 100%; border-spacing: 0; }
+			#ctre_elm_list tr { border: 0; }
+			#ctre_elm_list tr.ct_heading td { color: #bbb; }
+			#ctre_elm_list td { padding: 0; border: 0; background: #f7f7f7; }
+			#ctre_elm_list tr:nth-child(even) td { background: #fcfcfc; }
+			#ctre_elm_list td:nth-child(1) { padding-left: 20px; }
+			#ctre_elm_list td:nth-child(2) { text-align: center; }
+			#ctre_elm_list td:nth-child(3) { padding-right: 20px; }
+			#ctre_elm_list tr:not(.ct_heading) td:nth-child(1) { font-family: monospace; font-size: 11px; }
+			#ctre_elm_list td input { display: inline; -webkit-appearance: checkbox; }
+			#ctre_elm_list td input:before, #ctre_elm_list td input:after { content: none; }
+			#ctre_elm_list .ct_edit_selector { font-family: sans-serif; float: right; opacity: 0; color: #0fb4d4; text-decoration: none; }
+			#ctre_elm_list .ct_edit_selector:hover { color: #000; }
+			#ctre_elm_list tr:hover .ct_edit_selector { opacity: 1; }
+			#ctre_elm_list a.ct_delete { color: #f00; padding: 4px; text-decoration: none; font-size: 14px; }
+			#ctre_elm_list a.ct_delete:hover { color: #fff; background: #f00; }
+
+			#ctre_wnd .ct_more { border-top: solid 1px #f7f7f7; margin: 0 -20px; padding-top: 12px; color: #bbb; font-size: 10px; text-align: center; }
+			#ctre_wnd .ct_more a { color: #0fb4d4; font-size: inherit; text-decoration: none; transition: color 0.5s; }
+			#ctre_wnd .ct_more a:hover { color: #000; }
+
+			#ctre_wnd.minimized { width: 80px; height: 12px; }
+			#ctre_wnd.minimized > * { display: none; }
+			#ctre_wnd.minimized .ct_minimize,
+			#ctre_wnd.minimized .ct_close { display: block; }
+			#ctre_wnd.minimized .ct_minimize i { display: inline-block; transform: rotate(-135deg); }
+			#ctre_wnd.minimized .ct_logo.small { display: block; margin: -4px 0 0 -10px; }
+			</style></head>
+    <body>
+        <h1 id="hdrTitle">Loading Data from covidtracking.com...</h1>
+        <h2 id="hdrInfo"></h2>
+        <div style="margin-left:50px;">
+            <b>Style:</b>
+            <input type="radio" id="style-radio-color" name="style-radio" value="c" checked="checked" onclick="styleRadioOnClick(this);">
+            <label for="style-radio-color">Color</label>
+            <input type="radio" id="style-radio-mono" name="style-radio" value="m" onclick="styleRadioOnClick(this);">
+            <label for="dashboard-radio-mono">Monochrome</label>
+            
+            <b style="padding-left:50px;">Data Set:</b>
+            <input type="radio" id="dataset-radio-cases" name="dataset-radio" value="c" checked="checked" onclick="datasetRadioOnClick(this);">
+            <label for="dataset-radio-cases">Cases</label>
+            <input type="radio" id="dataset-radio-deaths" name="dataset-radio" value="d" onclick="datasetRadioOnClick(this);">
+            <label for="dataset-radio-deaths">Deaths</label>
+            <input type="radio" id="dataset-radio-tests" name="dataset-radio" value="t" onclick="datasetRadioOnClick(this);">
+            <label for="dataset-radio-tests" id="dataset-label-tests">Tests</label>
+
+            <b style="padding-left:50px;">Scale to Cases Per 100K:</b>
+            <input type="radio" id="scale-radio-no" name="scale-radio" value="n" checked="checked" onclick="scaleRadioOnClick(this);">
+            <label for="scale-radio-no">No</label>
+            <input type="radio" id="scale-radio-yes" name="scale-radio" value="y" onclick="scaleRadioOnClick(this);">
+            <label for="scale-radio-yes">Yes</label>
+
+            <b style="padding-left:50px;">State:</b>
+            <select id="select-state" onchange="selectStateOnChange(this);">
+                <option value="all">All States</option>
+            </select>
+
+            <table id="govParty">
+                <tbody><tr>
+                    <td style="font-size:large">Governor Party Affiliation</td>
+                    <td style="font-size:large" class="R">Republican</td>
+                    <td style="font-size:large" class="D">Democrat</td>
+                    <td style="font-size:large" class="N">New Progressive</td>
+                </tr>
+            </tbody></table>
+        </div>
+    <table id="tblGrid" cellspacing="0">
+
+        </table>&nbsp;
+        <div style="padding-top: 0.5in; padding-bottom: 0.5in; text-align:center">
+            Inspired by <a href="https://twitter.com/IrishDataViz/status/1270062177999822852">Irish Data Viz</a><br>
+            Questions or Comments? Email: <a href="mailto:uCamKen@protonmail.com?Subject=http://covidcharts.epizy.com/">uCamKen@protonmail.com</a><br>
+            State data from <a href="http://covidtracking.com/">The COVID Tracking Project</a> at <i>The Atlantic</i><br>
+            County data from <a href="https://github.com/nytimes/covid-19-data">The New York Times</a> on GitHub.
+        </div>
+    
+
+<div id="naptha_container0932014_0707"></div></body></html>
